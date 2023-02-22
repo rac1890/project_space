@@ -31,6 +31,6 @@ target_include_directories(${TARGET_NAME}
 	./include
 )
 
-axis_target_link_libraries(${TARGET_NAME}
-	PUBLIC
-)
+#axis_target_link_libraries(${TARGET_NAME}
+#	PUBLIC
+#)

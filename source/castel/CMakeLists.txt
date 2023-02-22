@@ -40,7 +40,7 @@ target_include_directories(${TARGET_NAME}
         ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-axis_target_link_libraries(${TARGET_NAME}
-	PUBLIC
-        common
-)
+#axis_target_link_libraries(${TARGET_NAME}
+#	PUBLIC
+#        common
+#)
