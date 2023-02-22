@@ -1,0 +1,64 @@
+#!abb:v2.102
+# This file is under the responsability of the project maintainer.
+#
+# It provides a single entry point to declare the dependencies *OF THIS PROJECT*
+#
+# This file will be parsed using the functions in AxisDepHelpers.cmake. 
+# Typically, CMakeLists.txt will contain a call to axis_process_dependencies().
+#
+# In this file:
+# 	- content is comma separated.
+#	- no blanks.
+#	- lines starting with # are ignored.
+#
+# Fields are as follow:
+#	1) project_name
+#	2) protocol (git)
+#	3) url (git@gitlab.sys.lab.ingenico.com:group/project.git)
+#	4) tag (v1.2)
+#	5) dependency type (see below)
+#
+# Dependency types:
+# 	cache_third_party_dep:
+#		- Download the sources inside the CACHE sources dir
+#		- Build them with the build script
+#		- Install in the CACHE devel dir 
+#		- Project will not appear within your IDE project
+#		- NO RPM DEPENDENCY WILL BE ADDED
+#	cache_first_party_dep:
+#		- Download the sources inside the CACHE sources dir
+#		- Execute the cmake file
+#		- Build in the CACHE build dir 
+#		- Install in the CACHE devel dir 
+#		- Project will not appear within your IDE project
+#		- NO RPM DEPENDENCY WILL BE ADDED
+#	project_cmake_dep:
+#		- Download the sources inside the same workspace tree that your project.
+#		- Execute the cmake file
+#		- Build it in your cmake binary dir 
+#		- Project will appear within your IDE project
+#
+#
+# apps
+axcommon-fr,git,git@gitlab.sys.lab.ingenico.com:ak/apps/libaxcommon-fr.git,v2.12.0-1,cache_first_party_dep
+
+# libs
+axseqnum,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxseqnum.git,v2.1.1-1,cache_first_party_dep
+axkernel,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxkernel.git,v2.0.0-1,cache_first_party_dep
+axsecurity,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxsecurity.git,v6.1.1-1,cache_first_party_dep
+axsuite,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxsuite.git,v2.2.1-1,cache_first_party_dep
+axsettlementreport,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxsettlementreport.git,v4.0.2-1,cache_first_party_dep
+axmessaging,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxmessaging.git,v6.2.13-1,cache_first_party_dep
+
+# tools
+axconfig,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libaxconfig.git,v3.2.2-1,cache_first_party_dep
+
+# externals
+poco190,git,git@gitlab.sys.lab.ingenico.com:ak/externals/poco190.git,v1.0.3-1,cache_third_party_dep
+
+# RPM dependencies
+kernel,git,git@gitlab.sys.lab.ingenico.com:ak/core/kernel.git,v5.9.5-2,package_dep
+
+# TEST
+cppunit,git,git@gitlab.sys.lab.ingenico.com:ak/externals/externals-cppunit.git,v1.12.1-6,cache_third_party_dep,test
+cppunitwrapper,git,git@gitlab.sys.lab.ingenico.com:ak/lib/libcppunitwrapper.git,v2.1.0-5,cache_first_party_dep,test
